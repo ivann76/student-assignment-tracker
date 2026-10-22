@@ -1,0 +1,1 @@
+import{h as n,c,t as r,n as p,p as t}from"./index-BAIyF-AW.js";const u={__name:"StatusBadge",props:{status:String},setup(o){const s=o,a=t(()=>({todo:"bg-secondary",doing:"bg-warning text-dark",done:"bg-success"})[s.status]),e=t(()=>({todo:"To do",doing:"In progress",done:"Done"})[s.status]);return(d,l)=>(n(),c("span",{class:p(["badge",a.value])},r(e.value),3))}};export{u as _};
