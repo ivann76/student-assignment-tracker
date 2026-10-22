@@ -11,7 +11,6 @@ onMounted(async () => { try { preview.value = await api('assignments') } catch {
     <h1>Know what is due, before it is due.</h1>
     <p class="lead">Track assignments across your units and share useful ones with classmates.</p>
     <RouterLink v-if="!auth.user" to="/register" class="btn btn-accent btn-lg">Create free account</RouterLink>
-    <RouterLink v-else to="/dashboard" class="btn btn-accent btn-lg">Go to dashboard</RouterLink>
   </div>
   <h2 class="h5 mt-4">Shared by students</h2>
   <p v-if="!auth.user" class="text-muted">Log in to see everything and add your own.</p>

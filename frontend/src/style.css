@@ -1,7 +1,346 @@
-:root { --ink: #1d2b3a; --accent: #1f6f5c; --paper: #f6f8f7; }
-body { background: var(--paper); color: var(--ink); }
-.btn-accent { background: var(--accent); border-color: var(--accent); color: #fff; }
-.btn-accent:hover { background: #185a4a; color: #fff; }
-.navbar-brand { font-weight: 700; color: var(--accent) !important; }
-.due-soon { border-left: 4px solid #c0392b; }
-.card { border-radius: 6px; }
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+:root {
+  --ink: #1d2b3a;
+  --accent: #1f6f5c;
+  --paper: #f6f8f7;
+  --sidebar-width: 240px;
+  --sidebar-mobile-width: 76px;
+}
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* =========================================
+   MAIN APPLICATION LAYOUT
+========================================= */
+
+/* Reserve space for the fixed sidebar */
+#app {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 0 0 var(--sidebar-width);
+  box-sizing: border-box;
+}
+
+/* Prevent main content from overflowing */
+#app > :not(.app-sidebar) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* =========================================
+   EXISTING GLOBAL COMPONENTS
+========================================= */
+
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background: #185a4a;
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--accent) !important;
+}
+
+.due-soon {
+  border-left: 4px solid #c0392b;
+}
+
+.card {
+  border-radius: 6px;
+}
+
+/* =========================================
+   LEFT SIDEBAR
+========================================= */
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: var(--sidebar-width);
+  height: 100vh;
+  height: 100dvh;
+
+  background: #f8f9fb;
+  border-right: 1px solid #e9e9ed;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+
+  padding: 24px 12px 16px;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   SIDEBAR ACCOUNT
+========================================= */
+
+.sidebar-account {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 9px 30px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #e6e3ff;
+  color: #6558d9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.account-details strong {
+  font-size: 13px;
+  color: #20232a;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-details small {
+  font-size: 11px;
+  color: #8b909c;
+}
+
+/* =========================================
+   SIDEBAR NAVIGATION SECTION
+========================================= */
+
+.sidebar-section {
+  flex: 1;
+  min-height: 0;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #888d99;
+  margin: 12px 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 11px 13px;
+  margin-bottom: 4px;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  color: #5c626e;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+/* Hover effect */
+.sidebar-link:hover {
+  background: #eeeef3;
+  color: #16181d;
+}
+
+/* Active navigation */
+.sidebar-link.active {
+  background: #ffffff;
+  color: #191b22;
+
+  font-weight: 700;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================
+   SIDEBAR ICONS
+========================================= */
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+
+  text-align: center;
+  font-size: 18px;
+
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* Support Lucide SVG icons */
+.sidebar-link svg {
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  stroke: currentColor;
+}
+
+/* =========================================
+   SIDEBAR BOTTOM
+========================================= */
+
+.sidebar-bottom {
+  border-top: 1px solid #e9e9ed;
+  padding-top: 12px;
+  flex-shrink: 0;
+}
+
+.logout {
+  width: 100%;
+
+  border: none;
+  background: transparent;
+
+  text-align: left;
+  cursor: pointer;
+
+  color: #d94b4b;
+  font-family: inherit;
+}
+
+.logout:hover {
+  background: #fef2f2;
+  color: #d94b4b;
+}
+
+/* =========================================
+   BOOTSTRAP CONTENT COMPATIBILITY
+========================================= */
+
+/* Prevent wide content from extending
+   beyond the available dashboard area */
+
+.container,
+.container-fluid {
+  box-sizing: border-box;
+}
+
+/* Keep tables scrollable on smaller screens */
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+}
+
+/* =========================================
+   TABLET / MOBILE RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 767px) {
+
+  /* Reduce reserved space */
+  #app {
+    padding-left: var(--sidebar-mobile-width);
+  }
+
+  /* Narrow sidebar */
+  .app-sidebar {
+    width: var(--sidebar-mobile-width);
+
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  /* Hide account text and section titles */
+  .account-details,
+  .section-label {
+    display: none;
+  }
+
+  .sidebar-account {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Icons only */
+  .sidebar-link {
+    font-size: 0;
+    justify-content: center;
+    gap: 0;
+    padding: 12px 4px;
+  }
+
+  .menu-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  .sidebar-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sidebar-bottom {
+    padding-top: 10px;
+  }
+}
