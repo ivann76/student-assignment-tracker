@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-const API = import.meta.env.VITE_API_URL || '/api/index.php'
+const API = '/api/index.php'
 
 // Shared login state, saved in localStorage so it survives page reloads
 export const auth = reactive({
